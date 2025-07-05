@@ -1,6 +1,8 @@
 import Carrusel from "../carrusel.jsx";
 import Nav from "../navbar.jsx";
+import Compras from "../productos/Compras.jsx"
 import React from 'react';
+
 
 function Componete1() {
   return (
@@ -8,6 +10,7 @@ function Componete1() {
 
 <Nav/>
 <Carrusel/>
+<Compras/>
 </>
   );
 }
