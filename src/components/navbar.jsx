@@ -1,21 +1,39 @@
-// src/components/Navbar.jsx
 import React from 'react';
-import { AppBar, Toolbar, Box } from "@mui/material";
+import { AppBar, Toolbar, Box, Stack, Typography, Button } from "@mui/material";
 import SearchBar from "./buscador";
 import IconButtons from "./iconox.jsx";
+import logo from "../assets/logo.png";
 
 function Navbar() {
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#fff", boxShadow: 1 }}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        {/* LOGO */}
-        <Box component="img" src="../assets/logo.png" alt="Logo" sx={{ height: 40 }} />
+    <AppBar position="static" sx={{ backgroundColor: "#d70000", py: 1 }}>
+      <Toolbar sx={{ alignItems: "flex-start", flexDirection: "row", justifyContent: "space-between" }}>
+        {/* IZQUIERDA: Logo que ocupa ambas filas */}
+        <Box sx={{ mr: 2 }}>
+          <Box component="img" src={logo} alt="Logo" sx={{ height: 60 }} />
+        </Box>
 
-        {/* Buscador */}
-        <SearchBar />
+        {/* DERECHA: Contenedor en dos filas */}
+        <Box sx={{ flexGrow: 1 }}>
+          {/* Primera fila: Buscador, ubicación, íconos */}
+          <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
+            <SearchBar />
+            <Typography variant="body2" sx={{ color: "#fff" }}>
+              Tu ubicación: <strong>(H3505) Col. Benítez</strong>
+            </Typography>
+            <IconButtons />
+          </Stack>
 
-        {/* Íconos */}
-        <IconButtons />
+          {/* Segunda fila: Menú inferior (botones) */}
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Button color="inherit" sx={{ color: "#fff", textTransform: "none" }}>Categorías</Button>
+            <Button color="inherit" sx={{ color: "#fff", textTransform: "none" }}>Promociones</Button>
+            <Button color="inherit" sx={{ color: "#fff", textTransform: "none" }}>Hacelo Easy</Button>
+            <Button color="inherit" sx={{ color: "#fff", textTransform: "none" }}>Medios de Pago</Button>
+            <Button color="inherit" sx={{ color: "#fff", textTransform: "none" }}>Servicios de instalaciones</Button>
+            <Button color="inherit" sx={{ color: "#fff", textTransform: "none" }}>Locales</Button>
+          </Stack>
+        </Box>
       </Toolbar>
     </AppBar>
   );
