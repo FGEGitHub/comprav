@@ -97,7 +97,7 @@ function Navbar() {
             </Drawer>
 
             <Button sx={{ color: "#fff", textTransform: "none" }}>Promociones</Button>
-            <Button sx={{ color: "#fff", textTransform: "none" }}>Hacelo Easy</Button>
+            <Button sx={{ color: "#fff", textTransform: "none" }}>Oferta semanal</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Medios de Pago</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Servicios de instalaciones</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Locales</Button>
