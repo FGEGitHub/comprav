@@ -11,13 +11,13 @@ function AppRoutes() {
 function App() {
   return (
    <BrowserRouter>
-       {/*  <ProductProvider>
-          <CartProvider> */}
+        <ProductProvider>
+          <CartProvider>
  
       <AppRoutes />
     
-{/*     </CartProvider>
-    </ProductProvider> */}
+    </CartProvider>
+    </ProductProvider>
     </BrowserRouter>
   )
 }
