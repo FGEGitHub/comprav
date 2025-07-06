@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.6.0",
     "rollup": "^3.20.2",
     "vite": "^4.4.9"
   },
