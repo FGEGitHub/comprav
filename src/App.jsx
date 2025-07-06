@@ -10,14 +10,15 @@ function AppRoutes() {
 
 function App() {
   return (
-
+   <BrowserRouter>
         <ProductProvider>
           <CartProvider>
-    <BrowserRouter>
+ 
       <AppRoutes />
-    </BrowserRouter>
+    
     </CartProvider>
     </ProductProvider>
+    </BrowserRouter>
   )
 }
 
