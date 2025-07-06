@@ -8,8 +8,7 @@ function App() {
   return element
 }
 
-function App() {
-  return (
+export default () => (
    <BrowserRouter>
         <ProductProvider>
           <CartProvider>
@@ -20,6 +19,3 @@ function App() {
     </ProductProvider>
     </BrowserRouter>
   )
-}
-
-export default App
