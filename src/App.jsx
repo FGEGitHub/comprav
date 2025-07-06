@@ -10,12 +10,12 @@ function App() {
 
 export default () => (
    <BrowserRouter>
-   {/*      <ProductProvider>
-          <CartProvider> */}
+     <ProductProvider>
+          <CartProvider> 
  
       <App />
     
-{/*     </CartProvider>
-    </ProductProvider> */}
+     </CartProvider>
+    </ProductProvider> 
     </BrowserRouter>
   )
