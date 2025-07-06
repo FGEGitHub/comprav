@@ -3,7 +3,7 @@ import Rutas from './routes/routes.jsx'
 import { BrowserRouter, useRoutes } from 'react-router-dom'
 import { ProductProvider } from "./context/ProductContext";
 import { CartProvider } from "./context/CartContext";
-function AppRoutes() {
+function App() {
   const element = useRoutes(Rutas)
   return element
 }
@@ -14,7 +14,7 @@ function App() {
         <ProductProvider>
           <CartProvider>
  
-      <AppRoutes />
+      <App />
     
     </CartProvider>
     </ProductProvider>
