@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import {
   AppBar, Toolbar, Box, Stack, Typography, Button,
-  Menu, MenuItem, Drawer, List, ListItem, ListItemText
+  Menu, MenuItem, Drawer, List, ListItem, ListItemText,
+  IconButton, Badge, Popover
 } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchBar from "./buscador";
 import IconButtons from "./iconox.jsx";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useCarrito } from "../context/CartContext"; // Ajustá según tu estructura
 import logo from "../assets/logo.jpg";
 
 function Navbar() {
-  // 🧭 Estado para ubicación
   const [anchorElUbicacion, setAnchorElUbicacion] = useState(null);
   const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState("Col. Benítez");
 
@@ -19,7 +22,6 @@ function Navbar() {
     setAnchorElUbicacion(null);
   };
 
-  // 🗂 Estado para categorías
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("");
 
@@ -29,9 +31,16 @@ function Navbar() {
     setDrawerOpen(false);
   };
 
-  // Listas
   const ubicaciones = ["Local 1", "Local 2", "Local 3"];
   const categorias = ['Herramientas', 'Construcción', 'Jardinería', 'Pintura'];
+
+  // 🛒 Carrito
+  const { carrito, quitarDelCarrito } = useCarrito();
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+
+  const [anchorElCarrito, setAnchorElCarrito] = useState(null);
+  const handleCarritoClick = (event) => setAnchorElCarrito(event.currentTarget);
+  const handleCarritoClose = () => setAnchorElCarrito(null);
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "#d70000", py: 1 }}>
@@ -46,7 +55,7 @@ function Navbar() {
           <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between" sx={{ mb: 1 }}>
             <SearchBar />
 
-            {/* Botón de ubicación con ícono de flecha */}
+            {/* Botón ubicación */}
             <Button
               onClick={handleUbicacionClick}
               sx={{ color: "#fff", textTransform: "none", display: "flex", alignItems: "center" }}
@@ -54,23 +63,56 @@ function Navbar() {
             >
               Tu ubicación: <strong>&nbsp;({ubicacionSeleccionada})</strong>
             </Button>
-<Menu
-  anchorEl={anchorElUbicacion}
-  open={Boolean(anchorElUbicacion)}
-  onClose={() => handleUbicacionClose(null)}
-  anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
-  transformOrigin={{ vertical: "top", horizontal: "left" }}
-  getContentAnchorEl={null} // si usás MUI v4, necesario para evitar comportamiento default
-  PaperProps={{
-    sx: {
-      mt: 1, // opcional: separación de unos píxeles para que no quede pegado
-    }
-  }}
->
+            <Menu
+              anchorEl={anchorElUbicacion}
+              open={Boolean(anchorElUbicacion)}
+              onClose={() => handleUbicacionClose(null)}
+              anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+              transformOrigin={{ vertical: "top", horizontal: "left" }}
+              PaperProps={{ sx: { mt: 1 } }}
+            >
               {ubicaciones.map((ubic, i) => (
                 <MenuItem key={i} onClick={() => handleUbicacionClose(ubic)}>{ubic}</MenuItem>
               ))}
             </Menu>
+
+            {/* 🛒 Ícono del carrito */}
+            <IconButton onClick={handleCarritoClick} sx={{ color: "#fff" }}>
+              <Badge badgeContent={totalItems} color="secondary">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
+            <Popover
+              open={Boolean(anchorElCarrito)}
+              anchorEl={anchorElCarrito}
+              onClose={handleCarritoClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
+              PaperProps={{ sx: { width: 300, p: 2 } }}
+            >
+              <Typography variant="h6" gutterBottom>Carrito</Typography>
+              {carrito.length === 0 ? (
+                <Typography variant="body2">El carrito está vacío.</Typography>
+              ) : (
+                carrito.map((item, idx) => (
+                  <Stack
+                    key={idx}
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                    spacing={1}
+                    sx={{ mb: 1 }}
+                  >
+                    <Typography variant="body2">
+                      {item.nombre} x{item.cantidad}
+                    </Typography>
+                    <IconButton size="small" onClick={() => quitarDelCarrito(item.id)}>
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
+                  </Stack>
+                ))
+              )}
+            </Popover>
 
             <IconButtons />
           </Stack>
