@@ -76,43 +76,7 @@ function Navbar() {
               ))}
             </Menu>
 
-            {/* 🛒 Ícono del carrito */}
-            <IconButton onClick={handleCarritoClick} sx={{ color: "#fff" }}>
-              <Badge badgeContent={totalItems} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
-            <Popover
-              open={Boolean(anchorElCarrito)}
-              anchorEl={anchorElCarrito}
-              onClose={handleCarritoClose}
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-              transformOrigin={{ vertical: "top", horizontal: "right" }}
-              PaperProps={{ sx: { width: 300, p: 2 } }}
-            >
-              <Typography variant="h6" gutterBottom>Carrito</Typography>
-              {carrito.length === 0 ? (
-                <Typography variant="body2">El carrito está vacío.</Typography>
-              ) : (
-                carrito.map((item, idx) => (
-                  <Stack
-                    key={idx}
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                    spacing={1}
-                    sx={{ mb: 1 }}
-                  >
-                    <Typography variant="body2">
-                      {item.nombre} x{item.cantidad}
-                    </Typography>
-                    <IconButton size="small" onClick={() => quitarDelCarrito(item.id)}>
-                      <DeleteIcon fontSize="small" />
-                    </IconButton>
-                  </Stack>
-                ))
-              )}
-            </Popover>
+       
 
             <IconButtons />
           </Stack>
