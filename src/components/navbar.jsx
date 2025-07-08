@@ -103,10 +103,10 @@ function Navbar() {
             </Drawer>
 
             <Button onClick={() => navigate('/promociones')} sx={{ color: "#fff", textTransform: "none" }}>Promociones</Button>
-            <Button sx={{ color: "#fff", textTransform: "none" }}>Oferta semanal</Button>
+         {/*    <Button sx={{ color: "#fff", textTransform: "none" }}>Oferta semanal</Button> */}
             <Button onClick={() => navigate('/mediosdepago')}  sx={{ color: "#fff", textTransform: "none" }}>Medios de Pago</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Servicios de instalaciones</Button>
-            <Button sx={{ color: "#fff", textTransform: "none" }}>Locales</Button>
+            <Button  onClick={() => navigate('/sucursales')} sx={{ color: "#fff", textTransform: "none" }}>Sucursales</Button>
           </Stack>
         </Box>
       </Toolbar>
