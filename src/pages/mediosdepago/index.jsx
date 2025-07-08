@@ -1,12 +1,10 @@
 
 
 import { useNavigate, useParams } from "react-router-dom";
-
-//import Formulario from '../../components/componenteinscripcion/cerrado'
 import Nav from "../../components/navbar.jsx"; // cambia esto a tu ruta real
-
-import Componente from "../../components/inicio/componente.jsx"; // cambia esto a tu ruta real
-import React, { useEffect, useState } from "react";
+//import Formulario from '../../components/componenteinscripcion/cerrado'
+import Componente from "../../components/mediosdepago/componente"; // cambia esto a tu ruta real
+import React from "react";
 import {
     Button,
  

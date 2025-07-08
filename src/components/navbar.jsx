@@ -7,12 +7,12 @@ import {
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchBar from "./buscador";
 import IconButtons from "./iconox.jsx";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from 'react-router-dom';
 import { useCarrito } from "../context/CartContext"; // Ajustá según tu estructura
 import logo from "../assets/logo.jpg";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [anchorElUbicacion, setAnchorElUbicacion] = useState(null);
   const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState("Col. Benítez");
 
@@ -46,9 +46,9 @@ function Navbar() {
     <AppBar position="static" sx={{ backgroundColor: "#d70000", py: 1 }}>
       <Toolbar sx={{ alignItems: "flex-start", flexDirection: "row", justifyContent: "space-between" }}>
         {/* Logo */}
-        <Box sx={{ mr: 2 }}>
-          <Box component="img" src={logo} alt="Logo" sx={{ height: 60 }} />
-        </Box>
+    <Box onClick={() => navigate('/')} sx={{ cursor: "pointer", mr: 2 }}>
+  <Box component="img" src={logo} alt="Logo" sx={{ height: 60 }} />
+</Box>
 
         <Box sx={{ flexGrow: 1 }}>
           {/* Fila superior */}
@@ -102,9 +102,9 @@ function Navbar() {
               </Box>
             </Drawer>
 
-            <Button sx={{ color: "#fff", textTransform: "none" }}>Promociones</Button>
+            <Button onClick={() => navigate('/promociones')} sx={{ color: "#fff", textTransform: "none" }}>Promociones</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Oferta semanal</Button>
-            <Button sx={{ color: "#fff", textTransform: "none" }}>Medios de Pago</Button>
+            <Button onClick={() => navigate('/mediosdepago')}  sx={{ color: "#fff", textTransform: "none" }}>Medios de Pago</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Servicios de instalaciones</Button>
             <Button sx={{ color: "#fff", textTransform: "none" }}>Locales</Button>
           </Stack>

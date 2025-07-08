@@ -8,7 +8,7 @@ function Componete1() {
   return (
 <>
 
-<Nav/>
+
 {/* <Carrusel/> */}
 <Compras/>
 <Carrito/>

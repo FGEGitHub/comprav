@@ -1,16 +1,11 @@
 
 
 import { useNavigate, useParams } from "react-router-dom";
-
-//import Formulario from '../../components/componenteinscripcion/cerrado'
 import Nav from "../../components/navbar.jsx"; // cambia esto a tu ruta real
+//import Formulario from '../../components/componenteinscripcion/cerrado'
+import Componente from "../../components/promociones/componente.jsx"; // cambia esto a tu ruta real
+import React from "react";
 
-import Componente from "../../components/inicio/componente.jsx"; // cambia esto a tu ruta real
-import React, { useEffect, useState } from "react";
-import {
-    Button,
- 
-  } from "@mui/material";
   import {
     useMediaQuery,
     useTheme,
@@ -25,8 +20,7 @@ const theme = useTheme();
                 <>
 <Nav/>
                    <Componente/>
-   {/*           
-                   <Formulario/> */}
+
                 </>
            
             );
